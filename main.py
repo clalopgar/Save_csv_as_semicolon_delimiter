@@ -2,6 +2,7 @@ from easygui import fileopenbox
 import pandas as pd
 import os
 
+
 Semicolon=';'
 filesCsv = dict()
 
@@ -34,8 +35,8 @@ def AddToCsvDicctionary(path):
     if csvSep !=None:
         new_csv=[path,csvSep]
         if header not in filesCsv:
-            csv_paths[header]=[]
-            filesCsv[header].append(new_csv)
+            filesCsv[header]=[]
+        filesCsv[header].append(new_csv)
     csv.close()
 
 def NameOfFile(path):
@@ -77,8 +78,8 @@ def SaveCsv(csvList):
 def main():
     csv_paths = SelectCSVPaths()
     GroupByTypes(csv_paths)
-    for csv,list_csv in csv_paths.items():
-		SaveCsv(list_csv)
+    for csv,list_csv in filesCsv.items():
+        SaveCsv(list_csv)
     input("Presiona tecla para finalizar")
 
 main()
